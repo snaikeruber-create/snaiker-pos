@@ -4,7 +4,7 @@ const app = express();
 app.use(express.json());
 
 app.get("/", (req, res) => {
-  res.send("Snaiker POS is running");
+  res.status(200).send("Snaiker POS is running");
 });
 
 app.post("/webhooks/uber", (req, res) => {
@@ -13,6 +13,6 @@ app.post("/webhooks/uber", (req, res) => {
 });
 
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
+app.listen(PORT, "0.0.0.0", () => {
   console.log(`Snaiker POS running on port ${PORT}`);
 });
