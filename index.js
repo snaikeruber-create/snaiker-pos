@@ -13,7 +13,7 @@ app.get("/", (req, res) => {
   res.send("Snaiker POS running");
 });
 
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT;
 app.listen(PORT, () => {
   console.log(`Snaiker POS running on port ${PORT}`);
 });
