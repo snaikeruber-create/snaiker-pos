@@ -5,20 +5,20 @@ app.use(express.json());
 
 app.post("/webhooks/uber", (req, res) => {
   console.log("Webhook reçu:", req.body);
-  res.status(200).json({ received: true });
+  res.status(200).send("OK");
 });
 
 app.get("/", (req, res) => {
   res.send("Snaiker POS running");
 });
 
-// ⚠️ IMPORTANT POUR RAILWAY
-const PORT = Number(process.env.PORT);
+const port = Number(process.env.PORT);
 
-if (!PORT) {
-  throw new Error("PORT is not defined");
+if (!port) {
+  console.error("❌ PORT is not defined");
+  process.exit(1);
 }
 
-app.listen(PORT, "0.0.0.0", () => {
-  console.log(`Snaiker POS running on port ${PORT}`);
+app.listen(port, "0.0.0.0", () => {
+  console.log(`✅ Snaiker POS running on port ${port}`);
 });
